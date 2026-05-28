@@ -1,0 +1,27 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model WorkEntry {
+  id         String   @id @default(cuid())
+  date       DateTime
+  workType   String
+  volume     Float
+  unit       String
+  workerName String
+  createdAt  DateTime @default(now())
+
+  @@index([date])
+  @@index([workType])
+  @@index([workerName])
+}
+
+model WorkType {
+  id   String @id @default(cuid())
+  name String @unique
+}
