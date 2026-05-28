@@ -1,5 +1,11 @@
-import { createApp } from "../backend/src/app.js";
+import type { IncomingMessage, ServerResponse } from "node:http";
 
-const app = createApp();
+const appPromise = import("../backend/src/app.js").then(({ createApp }) => createApp());
 
-export default app;
+export default async function handler(
+  request: IncomingMessage,
+  response: ServerResponse
+): Promise<void> {
+  const app = await appPromise;
+  app(request, response);
+}
