@@ -5,7 +5,10 @@
   "outputDirectory": "frontend/dist",
   "functions": {
     "api/[...path].ts": {
-      "maxDuration": 30
+      "maxDuration": 60
+    },
+    "api/entries/[id].ts": {
+      "maxDuration": 60
     }
   },
   "rewrites": [
