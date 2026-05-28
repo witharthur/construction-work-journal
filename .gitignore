@@ -42,3 +42,8 @@ Desktop.ini
 .vscode/
 *.swp
 *.swo
+
+# Vercel local project metadata
+.vercel/
+
+.vercel

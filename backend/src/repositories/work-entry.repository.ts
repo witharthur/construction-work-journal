@@ -46,13 +46,27 @@ export class WorkEntryRepository {
   }
 
   public async create(data: EntryBodyInput): Promise<WorkEntry> {
-    return prisma.workEntry.create({ data });
+    return prisma.workEntry.create({
+      data: {
+        date: data.date,
+        workType: data.workType,
+        volume: data.volume,
+        unit: data.unit,
+        workerName: data.workerName
+      }
+    });
   }
 
   public async update(id: string, data: EntryBodyInput): Promise<WorkEntry> {
     return prisma.workEntry.update({
       where: { id },
-      data
+      data: {
+        date: data.date,
+        workType: data.workType,
+        volume: data.volume,
+        unit: data.unit,
+        workerName: data.workerName
+      }
     });
   }
 
